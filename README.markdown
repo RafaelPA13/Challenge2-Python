@@ -16,8 +16,8 @@ O Cartola Formula-E é um jogo interativo em Python que simula uma corrida de Fo
 
 - **Apostar nos Pódios:** Selecione os três primeiros colocados.
 - **Escolher a Melhor Equipe:** Aposte na equipe com o melhor desempenho.
+- **Escolher a melhor volta:** Aposte no piloto que fará a melhor volta
 - **Simulação Visual da Corrida:** Assista à corrida em tempo real, com carrinhos coloridos representando cada piloto e suas posições na pista.
-- **Cálculo de Pontos:** O sistema calcula os pontos de cada equipe com base no desempenho de seus pilotos.
 - **Resultado das Apostas:** Descubra se você acertou seus palpites e qual equipe venceu.
 
 ## Como Jogar
@@ -25,7 +25,7 @@ O Cartola Formula-E é um jogo interativo em Python que simula uma corrida de Fo
 1. **Clone o Repositório:**
 
    ```bash
-   git clone https://github.com/seu-usuario/cartola-formula-e.git
+   git clone https://github.com/RafaelPA13/Challenge2-Python.git
    ```
 
 2. **Execute o Jogo:**
@@ -39,8 +39,12 @@ O Cartola Formula-E é um jogo interativo em Python que simula uma corrida de Fo
 ## Estrutura do Projeto
 
 - **`main.py`:** Executa o jogo, importando funções e definindo equipes e pilotos.
-- **`game.py`:** Contém a lógica da simulação da corrida e a exibição visual.
-- **`funcoes.py`:** Inclui funções auxiliares para interação com o usuário e exibição de informações.
+- **`partida.py`:** Contém a lógica da simulação da corrida e a exibição visual.
+- **`betting`:** Contém toda a logica do sistema de apostas
+
+### Configuracoes
+Você poderá alterar as configuracoes do jogo (numero de voltas e velocidade da corrida) em `configs.py`
+
 
 ## Próximos Passos
 
