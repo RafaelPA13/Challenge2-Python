@@ -10,17 +10,17 @@ class ApostaTop3(Aposta):
     palpites: list[Piloto]
     podio: list[Podio]
 
-    def __init__(self):
-        super().__init__('Top 3')
+    def __init__(self, pontos_ao_acertar: int):
+        super().__init__('Top 3', pontos_ao_acertar)
         self.palpites = []
 
-    def avaliar(self, resultado: list[Podio]):
+    def obter_pontuacao(self, resultado: list[Podio]):
         acertos = 0
         self.podio = resultado[:3]
         for i in range(3):
             if resultado[i].piloto == self.palpites[i]:
-                acertos += 1
-        return acertos > 0
+                acertos += self.pontos_ao_acertar
+        return acertos
 
     def coletar_aposta(self, pilotos: list[Piloto], equipes: list[Equipe]):
         print("Faça sua aposta nos 3 primeiros colocados (digite o numero dos pilotos):")

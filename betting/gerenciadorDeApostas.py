@@ -23,12 +23,18 @@ class BettingSystem:
 
     def avaliar_apostas(self, resultados_podio: list[Podio]):
         printar_cabecalho("Resultado das Apostas")
+        pontos_total = 0
         for aposta in self.apostas:
             print(f"Resultado: {aposta.tipo}\n")
-            acertou = aposta.avaliar(resultados_podio)
+            pontos = aposta.obter_pontuacao(resultados_podio)
+            pontos_total += pontos
             aposta.exibir_resultado()
-            if acertou:
-                exibir_com_cor("Deu green!", CORES['GREEN'])
+            if pontos > 0:
+                exibir_com_cor(
+                    f"Deu green! Você fez {pontos} pontos com essa aposta, atingindo um total de {pontos_total} pontos!",
+                    CORES['GREEN'])
             else:
-                exibir_com_cor("Errou!", CORES['RED'])
+                exibir_com_cor("Poxa! Você não pontuou :(", CORES['RED'])
             print("-" * 50)
+
+        print(f"Pontuação total: {pontos_total}")

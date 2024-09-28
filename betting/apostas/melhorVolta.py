@@ -11,10 +11,10 @@ class ApostaMelhorVolta(Aposta):
     tempo_melhor_volta: float
     piloto_melhor_volta: Piloto
 
-    def __init__(self):
-        super().__init__('Melhor Volta')
+    def __init__(self, pontos_ao_acertar: int):
+        super().__init__('Melhor Volta', pontos_ao_acertar)
 
-    def avaliar(self, podios: list[Podio]):
+    def obter_pontuacao(self, podios: list[Podio]):
         self.tempo_melhor_volta = podios[0].tempo_de_voltas[0]
         self.piloto_melhor_volta = podios[0].piloto
 
@@ -23,7 +23,7 @@ class ApostaMelhorVolta(Aposta):
                 if tempo < self.tempo_melhor_volta:
                     self.tempo_melhor_volta = tempo
                     self.piloto_melhor_volta = podio.piloto
-        return self.piloto.nome == self.piloto_melhor_volta.nome
+        return self.pontos_ao_acertar if self.piloto.nome == self.piloto_melhor_volta.nome else 0
 
     def coletar_aposta(self, pilotos: list[Piloto], equipes: list[Equipe]):
         print("\nAposte no piloto que fará a melhor volta:")

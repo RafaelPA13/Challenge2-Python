@@ -9,7 +9,7 @@ from partida import Game
 
 game = Game(PILOTOS, EQUIPES, CORRIDA_VELOCIDADE, CORRIDA_NUMERO_DE_VOLTAS)
 
-apostas_disponiveis = [ApostaTop3(), ApostaMelhorEquipe(), ApostaMelhorVolta()]
+apostas_disponiveis = [ApostaTop3(10), ApostaMelhorEquipe(30), ApostaMelhorVolta(30)]
 bettingSystem = BettingSystem(apostas_disponiveis, PILOTOS, EQUIPES)
 bettingSystem.coletar_apostas()
 

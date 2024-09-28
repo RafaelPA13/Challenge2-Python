@@ -10,10 +10,10 @@ class ApostaMelhorEquipe(Aposta):
     equipe: Equipe
     equipe_vencedora: str
 
-    def __init__(self):
-        super().__init__('Melhor Equipe')
+    def __init__(self, pontos_ao_acertar: int):
+        super().__init__('Melhor Equipe', pontos_ao_acertar)
 
-    def avaliar(self, resultados: list[Podio]):
+    def obter_pontuacao(self, resultados: list[Podio]):
         pontos_por_posicao = {1: 25, 2: 18, 3: 15, 4: 12, 5: 10, 6: 8, 7: 6, 8: 4, 9: 2, 10: 1}
         pontos_por_equipe = {}
         for podio in resultados:
@@ -22,7 +22,7 @@ class ApostaMelhorEquipe(Aposta):
             pontos_por_equipe[equipe_nome] = pontos_por_equipe.get(equipe_nome, 0) + pontos
 
         self.equipe_vencedora = max(pontos_por_equipe, key=pontos_por_equipe.get)
-        return self.equipe.nome == self.equipe_vencedora
+        return self.pontos_ao_acertar if self.equipe.nome == self.equipe_vencedora else 0
 
     def exibir_resultado(self):
         exibir_com_cor(f"Melhor Equipe: {self.equipe_vencedora}\n"

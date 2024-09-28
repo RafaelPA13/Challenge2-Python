@@ -60,7 +60,7 @@ class PilotoState:
         return self.completou_a_corrida
 
     def mostrar_leaderboard(self, posicao_geral):
-        cabecalho = f"{posicao_geral} - {self.piloto.nome}";
+        cabecalho = f"{posicao_geral} - {self.piloto.nome}"
         if self.completou_a_corrida:
             cabecalho += f" - 🏁 {sum(self.tempos_das_voltas):.2f} segundos"
         print(cabecalho)
@@ -102,14 +102,15 @@ class Game:
             self.pilotos.append(PilotoState(piloto, 0, espacamento, 100, self.numero_de_voltas))
 
         while len(self.podio_pilotos) < len(self.pilotos):
+            limpar_terminal()
             self.atualizar_corrida()
             self.exibir_leaderboard()
             time.sleep(0.5 * self.velocidade_da_corrida)
 
+        limpar_terminal()
         return self.podio_pilotos
 
     def atualizar_corrida(self):
-        limpar_terminal()
         for piloto in self.pilotos:
             piloto.acelerar()
             piloto.mostrar_corrida()
