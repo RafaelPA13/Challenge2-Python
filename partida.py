@@ -60,12 +60,14 @@ class PilotoState:
         return self.completou_a_corrida
 
     def mostrar_leaderboard(self, posicao_geral):
-        cabecalho = f"{posicao_geral} - {self.piloto.nome}"
-        if self.completou_a_corrida:
-            cabecalho += f" - 🏁 {sum(self.tempos_das_voltas):.2f} segundos"
-        print(cabecalho)
+        cabecalho = f"{posicao_geral} - {self.piloto.nome} "
         for i, tempo in enumerate(self.tempos_das_voltas):
-            print(f"    Volta {i + 1}: {tempo:.2f} segundos")
+            cabecalho += f"{i + 1} 🏁: {tempo:.2f}s"
+            if i < len(self.tempos_das_voltas) - 1:
+                cabecalho += " | "
+        if self.completou_a_corrida:
+            cabecalho += f"\n Total 🏁 {sum(self.tempos_das_voltas):.2f} segundos"
+        print(cabecalho)
 
 
 class Podio:
