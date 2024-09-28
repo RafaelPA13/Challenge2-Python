@@ -27,10 +27,13 @@ class ApostaTop3(Aposta):
         nomes_pilotos = list(map(lambda p: p.nome, pilotos))
 
         printar_opcoes(nomes_pilotos)
-        for i in range(1, 4):
-            piloto_index = escolher_opcao_index(f"{i}º colocado: ", nomes_pilotos)
+        while len(self.palpites) < 3:
+            piloto_index = escolher_opcao_index(f"{len(self.palpites) + 1}º colocado: ", nomes_pilotos)
+            if pilotos[piloto_index] in self.palpites:
+                print("Esse piloto já foi escolhido!")
+                continue
             self.palpites.append(pilotos[piloto_index])
-            print(f"{i}º colocado: {pilotos[piloto_index].nome}")
+            print(f"{len(self.palpites)}º colocado: {pilotos[piloto_index].nome}")
 
     def exibir_resultado(self):
         for i in range(3):
