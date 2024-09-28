@@ -6,6 +6,9 @@ from betting.apostas.tresPrimeirosColocados import ApostaTop3
 from betting.gerenciadorDeApostas import BettingSystem
 from configs import PILOTOS, EQUIPES, CORRIDA_VELOCIDADE, CORRIDA_NUMERO_DE_VOLTAS
 from partida import Game
+from utils.terminal import limpar_terminal
+
+limpar_terminal()
 
 game = Game(PILOTOS, EQUIPES, CORRIDA_VELOCIDADE, CORRIDA_NUMERO_DE_VOLTAS)
 
